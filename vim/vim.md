@@ -113,10 +113,10 @@
 
 ```
 
-	 Q:删除配置文件注释行
+Q:删除配置文件注释行
 
-	 答案参考：
+答案参考：
 
-	 http://blog.csdn.net/lanchunhui/article/details/51588198
+http://blog.csdn.net/lanchunhui/article/details/51588198
 ```
 
