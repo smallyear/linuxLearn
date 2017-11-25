@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    {% for title in artlist%}
-    <p> {{ title }}!</p>
+    {% for art in artlist%}
+    <a href='files/{{ art.id  }}'> {{ art.title }}</a>
+    <br/>
     {% endfor%}
 </body>
 </html>
