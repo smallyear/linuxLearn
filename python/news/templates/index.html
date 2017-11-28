@@ -11,7 +11,10 @@
 <body>
     {% for art in artlist%}
     <a href='files/{{ art.id  }}'> {{ art.title }}</a>
-    <br/>
+    {% for tag in art.tags  %}
+        <span>{{ tag  }}</span>
+        {% endfor %}
+        <br/>
     {% endfor%}
 </body>
 </html>

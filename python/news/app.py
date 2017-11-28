@@ -41,24 +41,47 @@ class File(db.Model):
     #    return '<File %r>' % self.title
     
     def add_tag(self,tag_name):
-        print(self.id)
-        cat = {'file_id':self.id,'tag':tag_name}
-        mongodb.test.insert_one(cat)
+        file_item = mongodb.test.find_one({'file_id': self.id})
+        if file_item: 
+            tag = file_item['tags']
+            print(tag)
+            if tag_name not in tag:
+                tag.append(tag_name)
+            mongodb.test.update_one({'file_id': self.id},{'$set':{'tags':tag}})
+        else:
+           tag=[tag_name]
+           mongodb.test.insert_one({'file_id': self.id,'tags':tag})
 
     def remove_tag(self,tag_name):
-        cat = {'id':self.id,'tag':tag_name}
-        mongodb.test.remove_one(cat)
+        print(self.id,tag_name)
+        file_item = mongodb.test.find_one({'file_id': self.id})
+        print(file_item)
+        if file_item:
+            tag = file_item['tags']
+            print(tag)
+            tag.remove(tag_name)
+            print(tag)
+            mongodb.test.update_one({'file_id': self.id},{'$set',{'tags': tag}})
+            return tag
+        return []
 
+    @property
     def tags(self):
-        cat = {'id':self.id}
-        mongodb.test.find(cat)
+        cat = {'file_id':self.id}
+        file_item =  mongodb.test.find_one(cat)
+        if file_item:
+            return file_item['tags']
+        else:
+            return []
+
 @app.route('/')
 def index():
-    artlist = []
-    engine = create_engine('mysql://root:@localhost/test')
-    artlist =  engine.execute('select * from file').fetchall()
+#    artlist = []
+#    engine = create_engine('mysql://root:@localhost/test')
+#    artlist =  engine.execute('select * from file').fetchall()
+#    for art in artlist:
 
-    return render_template('index.html',artlist=artlist)
+    return render_template('index.html',artlist=File.query.all())
 
 @app.route('/files/<file_id>')
 def file(file_id):
