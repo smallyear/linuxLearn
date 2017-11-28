@@ -4,11 +4,14 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String,Text
 from sqlalchemy import create_engine
+from pymongo import MongoClient
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/test'
 db=SQLAlchemy(app)
-
+client=MongoClient('127.0.0.1',27017)
+mongodb = client.test
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True)
@@ -20,6 +23,8 @@ class Category(db.Model):
         return '<Category %r>' % self.name
 
 class File(db.Model):
+    __tablename__='files'
+
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(80))
     created_time = db.Column(db.DateTime)
@@ -32,9 +37,21 @@ class File(db.Model):
         self.category=category
         self.content=content
 
-    def __repr__(self):
-        return '<File %r>' % self.title
+    #def __repr__(self):
+    #    return '<File %r>' % self.title
+    
+    def add_tag(self,tag_name):
+        print(self.id)
+        cat = {'file_id':self.id,'tag':tag_name}
+        mongodb.test.insert_one(cat)
 
+    def remove_tag(self,tag_name):
+        cat = {'id':self.id,'tag':tag_name}
+        mongodb.test.remove_one(cat)
+
+    def tags(self):
+        cat = {'id':self.id}
+        mongodb.test.find(cat)
 @app.route('/')
 def index():
     artlist = []
@@ -49,6 +66,9 @@ def file(file_id):
     arts= []
     engine = create_engine('mysql://root:@localhost/test')
     arts =  engine.execute('select f.content,f.created_time,c.name from file f,category c where f.category_id = c.id and f.category_id  = ' + file_id).fetchall()
+    
+
+
     if arts:
         return render_template('file.html',arts=arts)
     else:
