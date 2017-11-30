@@ -53,17 +53,17 @@ class File(db.Model):
            mongodb.test.insert_one({'file_id': self.id,'tags':tag})
 
     def remove_tag(self,tag_name):
-        print(self.id,tag_name)
         file_item = mongodb.test.find_one({'file_id': self.id})
-        print(file_item)
         if file_item:
-            tag = file_item['tags']
-            print(tag)
-            tag.remove(tag_name)
-            print(tag)
-            mongodb.test.update_one({'file_id': self.id},{'$set',{'tags': tag}})
-            return tag
+            tags = file_item['tags']
+            try:
+                tags.remove(tag_name)
+            except ValueError:
+                return tags
+            mongodb.test.update_one({'file_id': self.id},{'$set':{'tags': tags}})
+            return tags
         return []
+
 
     @property
     def tags(self):
@@ -88,7 +88,7 @@ def file(file_id):
 
     arts= []
     engine = create_engine('mysql://root:@localhost/test')
-    arts =  engine.execute('select f.content,f.created_time,c.name from file f,category c where f.category_id = c.id and f.category_id  = ' + file_id).fetchall()
+    arts =  engine.execute('select f.content,f.created_time,c.name from files f,category c where f.category_id = c.id and f.category_id  = ' + file_id).fetchall()
     
 
 

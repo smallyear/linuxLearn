@@ -1,21 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-   <title>shiyanlou file list</title>
-   <meta name="Generator" content="EditPlus">
-   <meta name="Author" content="">
-   <meta name="Keywords" content="">
-   <meta name="Description" content="">
-</head>
+{% extends "base.html"%}
+{% block title %}Index{% endblock %}
+{% block content%}
 
-<body>
     {% for art in artlist%}
-    <a href='files/{{ art.id  }}'> {{ art.title }}</a>
+    <li class="list-group-item">
+    <a href='files/{{ art.id  }}'> <h1>{{ art.title }}</h1></a>
     {% for tag in art.tags  %}
-        <span>{{ tag  }}</span>
+        <span calss="label label-success">{{ tag  }}</span>
         {% endfor %}
         <br/>
     {% endfor%}
-</body>
-</html>
-
+{% endblock %}
