@@ -1,0 +1,98 @@
+import pandas as pd
+data = pd.read_csv('apple.csv',header=0)
+data.resample('3M')
+data
+type(data)
+type(data['Volume'])
+data['Volume'].resample('3M').sum()
+data['Volume']
+data['index','Volume']
+data['index':'Volume']
+res = pd.Series(data['Volume'],index=data[])
+data.index()
+data
+res = pd.Series(data['Volume'],index=data['Date'])
+res
+data['Volume']
+res = pd.Series(data['Volume'],index=data['Date'])
+res
+s = np.random.randn(10)
+import numpy as np
+s = np.random.randn(10)
+s
+type(s)
+type(data['Volume'])
+type(data['Volume'][1])
+data['Volume'][1]
+data['Volume'].loc('1')
+data['Volume']
+data['Volume'].iloc('1')
+data['Volume']
+data['Volume'].resample('2').sum()
+data['Date']
+data[['Date','Volume']]
+data[['Date','Volume']].resample('2D').sum()
+data[['Date','Volume']]
+foo = data['Date'].as_matrix()
+foo
+res = pd.Series(data['Volume'].as_matrix(),index=data['Date'].as_matrix())
+res
+res.resample('2D').sum()
+res = pd.Series(data['Volume'].as_matrix(),index=data['Date'])
+res
+res.resample('2D').sum()
+timeindex = pd.to_datetime(data['Date'])
+timeindex
+res = pd.Series(data['Volume'].as_matrix(),index=timeindex)
+res
+res.resample('2D').sum()
+res
+res.resample('3M').sum()
+lala = res.resample('3M').sum()
+type(lala)
+lala.max()
+lala.head()
+lala.head(2)
+lala.max(2)
+lala.max()
+lala
+lala.sort()
+lala.sort_values()
+lala.sortlevel()
+lala.sort_values()
+lala.sort_values()['-1']
+lala.sort_values()
+lala.sort_values()['2012-04-30']
+lala.sort_values()['2012-04-30']
+lala.sort_values()
+type(lala.sort_values()['2012-04-30'])
+lala.sort_values()['2012-04-30'][1]
+lala.sort_values()['2012-04-30'][0]
+history
+re = lala.sort_values()
+re
+type(re)
+re.last()
+re.last('1')
+re.last_valid_index()
+re
+re.last_valid_index()
+re.lt()
+len(re)
+len(re)-1
+re[len(re)-1]
+re[len(re)-1][0]
+re[len(re)-1]
+type(re[len(re)-1])
+re
+type(re[len(re)-1])
+re[len(re)-1]
+re[len(re)-2]
+lala
+lala = res.resample('Q').sum()
+lala
+re = lala.sort_values()
+re
+re(len(re)-2)
+re[len(re)-2]
+%hist -f challenge_time_sequence.log
