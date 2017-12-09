@@ -1,0 +1,144 @@
+import numpy as np
+import matplotlib.pyplot as plt
+N = 50
+x = np.random.rand
+x
+x = np.random.rand(N)
+x
+y = np.random.rand(N)
+y
+colors = np.random.rand(N)
+colors
+area = np.pi * (15 * np.random.rand(N))** 2
+plt.scatter(x,y,s=area,c=colors,alpha=0.5)
+plt.show()
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,4)
+ax3 = fig.add_subplot(2,2,3)
+ax1.plot(np.random.randn(50).cumsum(),'k--')
+_ = ax2.hist(np.random.randn(100),bins=20,color='k')
+ax3.scatter(np.arange(30),np.arange(30)+3*np.random.randn(30))
+fig.show()
+import numpy as np
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+ax.set_title("axes example")
+major_ticks = np.arange(0,101,20)
+minor_ticks = np.arange(0,101,5)
+ax.set_xticks(major_ticks)
+ax.set_xticks(major_ticks,minor=True)
+ax.set_yticks(major_ticks)
+ax.set_yticks(minor_ticks,minor=True)
+ax.set_xticks(minor_ticks,minor=True)
+ax.set_xlabel('x axis')
+ax.set_ylabel('y axis')
+ax.grid(which='minor',alpha=0.2)
+ax.grid(which='major',alpha=0.5)
+ax.text(42,5,50,"shiyanlou")
+ax.text(42.5,50,"shiyanlou")
+fig.show()
+history
+fig.show()
+echo "color line"
+print("color line")
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linespace
+90
+x = np.linespace(0,1,100)
+x = np.linspace(0,1,100)
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+ax.set_title("shiyanlou line")
+ax.plot(x,x ** (1/8),'b--',label=r'$y = x^{1/8}$')
+ax.plot(x,x**8,'r--',label=r'$y = x^{8}$')
+ax.plot(x,x **(1/2),'r.',label=r'$y=x^{1/2}$')
+ax.plot(x,x**2,'b.',label=r'$y = x^{2}$')
+ax.plot(x,x,'g-',label=r'$y=x$')
+ax.legend()
+ax.axis([0,1,0,1])
+fig.show()
+import numpy as np
+import matplotlib.pyplot
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = fig.ass
+ax = fig.add_subplot(1,1,1)
+x = np.random.randn(100)
+y = np.random.randn(100)
+ax.plot(x,y)
+fig.show()
+import numpy as np
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+data = np.random.normal(0,20,1000)
+bins = np,arange(-100,100,5)
+bins = np.arange(-100,100,5)
+ax.hist(data,bins=bins)
+fig.show()
+x
+y
+import numpy as np
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+x = np.arange(1,101)
+x
+y = 20+3*x+np.random.normal(0,60,100)
+y
+ax.scatter(x,y)
+fig.show()
+ls
+pwd
+import numpy as np
+import matplotlib.pyplot as plt
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
+spread = np.random.rand(50) * 100
+center = np.ones(25)* 50
+outlier_high= np.random.rand(10)*100+100
+outlier_low = np.random.rand(10)*-100
+data = np.concatenate((spread,center,outlier_high,outlier_low),0)
+ax.boxplot(data)
+fig.show()
+import matplotlib.pyplot as plt
+import numpy as no
+import numpy as np
+import pandas as pd
+from pasdas import Series,DataFrame
+from pandas import Series,DataFrame
+s = Series(np.random.randn(10.cunsum(),index= np.arange(1,100,10)))
+s
+s = Series(np.random.randn(10.cumsum(),index= np.arange(1,100,10)))
+s
+s = Series(np.random.randn(10.cumsum(),index= np.arange(1,100,10)))
+s = Series(np.random.randn(10).cumsum(),index= np.arange(1,100,10)))
+s
+s = Series(np.random.randn(10).cumsum(),index= np.arange(1,100,10))
+s
+s.plot()
+plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from pandas import Series,DataFrame
+df = pd.DataFrame(np.random.rand(5,4),columns=['A','B','C','D'])
+df
+df.boxplot()
+plt.show()
+history > log
+ls
+history > matplotlib.log
+ll
+pwd
+history
+save > log
+save?
+save -a log
+%save -a log
+%hist -f 'matplotlib.log'
+%hist -f matplotlib.log
+%hist -f pdmat.log
