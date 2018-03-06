@@ -1,0 +1,4 @@
+
+Login incorrect
+ubuntu login: ifconfig
+Password: 
