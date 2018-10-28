@@ -1,2 +1,4 @@
 git rm --cached test
 git commmit --amend
+dd
+dd
