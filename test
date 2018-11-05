@@ -4,4 +4,23 @@ dd wiaaw
 dd
 git stash pop
 git stash list
+    async def delete_tuple_relation_and_detail(self, owner_id=Owner.PROOFER.value):
+        """删除本project指定owner的所有tuple_relations(包括tuple_relation_detail和box)"""
+        relations = await peewee_async.select(
+            TupleRelation.select(TupleRelation.id).where(
+                TupleRelation.project_id == self.id, TupleRelation.owner_id == owner_id
+            )
+        )
+        documents = await peewee_async.select(Document.select(Document.id).where(Document.project == self))
+        document_ids = [document.id for document in documents]
+        relation_ids = [relation.id for relation in relations]
+        await peewee_async.delete(
+            TupleRelation.delete().where(TupleRelation.id.in_(relation_ids))
+        )
+        await peewee_async.delete(
+            TupleRelationDetail.delete().where(TupleRelationDetail.tuple_relation_id.in_(relation_ids))
+        )
+        await peewee_async.delete(
+            Box.delete().where(Box.owner_id == owner_id, Box.document_id.in_(document_ids))
+        )
 
