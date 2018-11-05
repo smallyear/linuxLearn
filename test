@@ -1,4 +1,7 @@
-git rm --cached test
+git rm --cached test #123
 git commmit --amend
+dd wiaaw
 dd
-dd
+git stash pop
+git stash list
+
