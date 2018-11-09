@@ -1,5 +1,6 @@
 git rm --cached test #123
 git commmit --amend
+git
 
     async def delete_tuple_relation_and_detail(self, owner_id=Owner.PROOFER.value):
         """删除本project指定owner的所有tuple_relations(包括tuple_relation_detail和box)"""
